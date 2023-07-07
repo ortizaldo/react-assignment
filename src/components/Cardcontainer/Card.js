@@ -13,9 +13,7 @@ export default function Movie(props) {
         height="350"
       />
       <p className="md:text-xl">
-        <Link href={`/${type}/${genSlug(title || name, id)}`}>
-          <a href={`/${type}/${genSlug(title || name, id)}`}>{title || name}</a>
-        </Link>
+        <a href={`/${type}/${genSlug(title || name, id)}`}>{title || name}</a>
       </p>
     </div>
   );
