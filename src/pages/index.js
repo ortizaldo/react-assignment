@@ -1,12 +1,10 @@
 import tmdb from "../config/tmdb";
 import Moviescontainer from "../components/Cardcontainer";
-export default function Home({ movies }) {
-  console.log("🚀 ~ file: index.js:4 ~ Home ~ movies:", movies);
-  console.log(movies);
+export default function Home({ movies, genres }) {
   return (
     <div className="container p-4 max-w-full">
       <section>
-        <Moviescontainer data={movies} type="movies" />
+        <Moviescontainer data={movies} genres={genres} type="movies" />
       </section>
     </div>
   );
@@ -19,9 +17,12 @@ export const getStaticProps = async () => {
       value: "vote_count.desc",
     },
   ]);
+
+  const genres = await tmdb.getGenres("movie");
   return {
     props: {
       movies: movies.results,
+      genres: genres.genres,
     },
   };
 };

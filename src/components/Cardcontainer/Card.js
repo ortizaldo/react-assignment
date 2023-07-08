@@ -15,6 +15,7 @@ export const text = Poppins({
 });
 
 export default function Movie(props) {
+  // console.log("🚀 ~ file: Card.js:18 ~ Movie ~ props:", props);
   const {
     title,
     name,
@@ -23,11 +24,14 @@ export default function Movie(props) {
     original_title,
     type,
     overview,
+    genre_ids,
     release_date,
     vote_average,
+    genres,
   } = props;
-  // const percentage = vote_average * 10;
-  // console.log("🚀 ~ file: Card.js:28 ~ Movie ~ percentage:", percentage);
+
+  // Buscar en el array de objetos
+  const resultados = genres.filter((genre) => genre_ids.includes(genre.id));
   return (
     <>
       <div class="card">
@@ -83,28 +87,25 @@ export default function Movie(props) {
                 {release_date}
               </div>
             </div>
-            <div
-              className={clsx(
-                "grid grid-flow-col auto-cols-max text-color",
-                titleFont.className
-              )}
-            >
-              <div style={{ color: "#0073b1" }}>{type}</div>
-            </div>
-            <div>
-              <button type="button" class="p-2 mt-4">
-                <i class="fab fa-youtube"></i>
-                <a
-                  className={clsx("", text.className)}
-                  href={`/${type}/${genSlug(title || name, id)}`}
-                >
-                  {title || name}
-                </a>
-              </button>
-            </div>
-          </div>
+            <p className={clsx("", text.className)}>
+              {resultados.map((objeto, idx) => {
+                idx += 1;
+                return idx === resultados.length
+                  ? objeto.name
+                  : objeto.name + ", ";
+              })}
+            </p>
 
-          {/* <p className={clsx("", text.className)}>{overview}</p> */}
+            <button type="button" class="p-2 mt-4">
+              <i class="fab fa-youtube"></i>
+              <a
+                className={clsx("", text.className)}
+                href={`/${type}/${genSlug(title || name, id)}`}
+              >
+                {title || name}
+              </a>
+            </button>
+          </div>
         </div>
       </div>
     </>
