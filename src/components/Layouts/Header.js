@@ -54,7 +54,12 @@ export default function Header() {
             <Link href="/upcoming-movies">Upcoming Movies</Link>
           </li>
           <li>
-            <Link href="/tv-shows">TV Shows</Link>
+            {" "}
+            <Link href="/popular-movies">Popular Movies</Link>
+          </li>
+          <li>
+            {" "}
+            <Link href="/top-movies">Top rated Movies</Link>
           </li>
         </ul>
       </nav>

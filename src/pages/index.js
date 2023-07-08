@@ -1,10 +1,11 @@
 import tmdb from "../config/tmdb";
 import Moviescontainer from "../components/Cardcontainer";
 export default function Home({ movies }) {
+  console.log("🚀 ~ file: index.js:4 ~ Home ~ movies:", movies);
   console.log(movies);
   return (
-    <div className="container ">
-      <section className="mt-8">
+    <div className="container p-4 max-w-full">
+      <section>
         <Moviescontainer data={movies} type="movies" />
       </section>
     </div>
