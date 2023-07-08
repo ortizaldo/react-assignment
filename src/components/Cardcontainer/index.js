@@ -7,7 +7,6 @@ export default function Cardcontainer({ data, genres, type }) {
         {data.map((d) => (
           <Card key={d.id} type={type} genres={genres} {...d} />
         ))}
-        {/* <Card key={null} type={null} /> */}
       </div>
     </>
   );

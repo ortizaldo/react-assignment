@@ -1,5 +1,17 @@
 import React, { useEffect } from "react";
 import Link from "next/link";
+import { Inter, Rubik, Poppins } from "@next/font/google";
+import clsx from "clsx";
+
+export const titleFont = Rubik({
+  subsets: ["latin"],
+});
+
+export const text = Poppins({
+  subsets: ["latin"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+});
+
 export default function Header() {
   useEffect(() => {
     const menuToggler = document.getElementById("menu-toggler");
@@ -26,7 +38,12 @@ export default function Header() {
               d="M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4M4 20h16a1 1 0 001-1V5a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1z"
             />
           </svg>
-          <Link href="/">Movies App</Link>
+          <Link
+            href="/"
+            className={clsx("text-2xl font-bold", titleFont.className)}
+          >
+            Movies App
+          </Link>
         </div>
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -51,15 +68,30 @@ export default function Header() {
         >
           <li>
             {" "}
-            <Link href="/upcoming-movies">Upcoming Movies</Link>
+            <Link
+              className={clsx("text-1xl", titleFont.className)}
+              href="/upcoming-movies"
+            >
+              Upcoming Movies
+            </Link>
           </li>
           <li>
             {" "}
-            <Link href="/popular-movies">Popular Movies</Link>
+            <Link
+              className={clsx("text-1xl", titleFont.className)}
+              href="/popular-movies"
+            >
+              Popular Movies
+            </Link>
           </li>
           <li>
             {" "}
-            <Link href="/top-movies">Top rated Movies</Link>
+            <Link
+              className={clsx("text-1xl", titleFont.className)}
+              href="/top-movies"
+            >
+              Top rated Movies
+            </Link>
           </li>
         </ul>
       </nav>
