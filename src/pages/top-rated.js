@@ -16,10 +16,6 @@ export const getStaticProps = async () => {
       param: "sort_by",
       value: "vote_count.desc",
     },
-    {
-      param: "page",
-      value: 3,
-    },
   ]);
 
   const genres = await tmdb.getGenres("movie");

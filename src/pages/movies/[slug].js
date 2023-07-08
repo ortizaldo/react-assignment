@@ -1,8 +1,18 @@
 import tmdb from "../../config/tmdb";
 import Image from "next/image";
+import { Inter, Rubik, Poppins } from "@next/font/google";
+import clsx from "clsx";
 import getIdFromSlug from "../../utils/parse-slug";
 import genSlug from "../../utils/gen-slug";
 import { convertToHours } from "../../utils/get-hours";
+export const titleFont = Rubik({
+  subsets: ["latin"],
+});
+
+export const text = Poppins({
+  subsets: ["latin"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+});
 export default function SingleMovie({ moviesData }) {
   const {
     poster_path,
@@ -28,32 +38,57 @@ export default function SingleMovie({ moviesData }) {
               height="350"
               className="rounded-lg"
             />
-            <div className="text-2xl">
+            <div className={clsx("text-2xl font-bold", titleFont.className)}>
               {title}
-              <p className="text-sm italic">{tagline}</p>
+              <p className={clsx("text-sm italic", text.className)}>
+                {tagline}
+              </p>
             </div>
           </section>
           <section className="col-span-3 md:col-span-2">
-            <div>
-              <p className="text-3xl mb-3 font-semibold">Overview</p>
+            <div className={clsx("m-1", text.className)}>
+              <p
+                className={clsx(
+                  "text-3xl mb-3 font-semibold",
+                  titleFont.className
+                )}
+              >
+                Overview
+              </p>
               {overview}
             </div>
             <div>
-              <p className="text-2xl font-semibold">Genres</p>
+              <p
+                className={clsx("text-2xl font-semibold", titleFont.className)}
+              >
+                Genres
+              </p>
               <div className="flex  gap-2">
                 {genres.map((genre) => (
-                  <div className="m-1 " key={genre.id}>
+                  <div className={clsx("m-1", text.className)} key={genre.id}>
                     {genre.name}
                   </div>
                 ))}
               </div>
-              <div>
-                <p className="text-2xl font-semibold">Runtime</p>
+              <div className={clsx("m-1", text.className)}>
+                <p
+                  className={clsx(
+                    "text-2xl font-semibold",
+                    titleFont.className
+                  )}
+                >
+                  Runtime
+                </p>
 
                 {convertToHours(runtime)}
               </div>
             </div>
-            <button className="my-2 p-3 bg-red-500 text-gray-50 rounded-lg">
+            <button
+              className={clsx(
+                "my-2 p-3 bg-red-500 text-gray-50 rounded-lg m-1",
+                text.className
+              )}
+            >
               <a
                 href={`https://www.youtube.com/watch?v=${results[0].key}`}
                 target="_blank"
@@ -75,7 +110,7 @@ export default function SingleMovie({ moviesData }) {
             </button>
           </section>
         </section>
-        <section className="mt-8">
+        <section className={clsx("mt-8", text.className)}>
           <p className="text-3xl mb-3">Cast</p>
 
           <div className="grid grid-cols-2 md:grid-cols-6 ">

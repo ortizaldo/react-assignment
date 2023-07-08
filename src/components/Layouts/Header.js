@@ -88,7 +88,7 @@ export default function Header() {
             {" "}
             <Link
               className={clsx("text-1xl", titleFont.className)}
-              href="/top-movies"
+              href="/top-rated"
             >
               Top rated Movies
             </Link>

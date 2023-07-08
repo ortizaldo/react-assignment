@@ -1,29 +1,23 @@
 import tmdb from "../config/tmdb";
 import Moviescontainer from "../components/Cardcontainer";
-export default function upcomingMovies({ movies }) {
+export default function upcomingMovies({ movies, genres }) {
   return (
     <div className="container ">
       <section className="mt-8">
-        <Moviescontainer data={movies} type="movies" />
+        <Moviescontainer data={movies} genres={genres} type="movies" />
       </section>
     </div>
   );
 }
 
 export const getStaticProps = async () => {
-  const movies = await tmdb.discover("movie", [
-    {
-      param: "primary_release_date.gte",
-      value: "2021-07-01",
-    },
-    {
-      param: "primary_release_date.lte",
-      value: "2021-12-31",
-    },
-  ]);
+  const movies = await tmdb.movies("upcoming");
+  const genres = await tmdb.getGenres("movie");
+
   return {
     props: {
       movies: movies.results,
+      genres: genres.genres,
     },
   };
 };
