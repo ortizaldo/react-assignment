@@ -22,28 +22,6 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
           </li>
         ))}
       </ul>
-      {/* {currentPage > 1 && (
-        <Link href={`/?page=${currentPage - 1}`}>
-          <a>Previous</a>
-        </Link>
-      )}
-
-      {Array.from({ length: totalPages }, (_, index) => (
-        <Link
-          style={{
-            fontWeight: index + 1 === currentPage ? "bold" : "normal",
-          }}
-          key={index}
-          href={`/?page=${index + 1}`}
-        >
-          {index + 1}
-        </Link>
-      ))}
-
-      {currentPage < totalPages && (
-        <Link href={`/?page=${currentPage + 1}`}>Next</Link>
-      )} */}
-      Pagination
     </div>
   );
 };

@@ -4,7 +4,7 @@ import Paginator from "../components/Cardcontainer/Paginator";
 import { useState } from "react";
 export default function Home({ movies, genres }) {
   const [currentPage, setCurrentPage] = useState(movies.page);
-  const onPageChange = (page) => {
+  const onPageChange = async (page) => {
     setCurrentPage(page);
   };
   return (
