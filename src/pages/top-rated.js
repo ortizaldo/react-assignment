@@ -21,7 +21,7 @@ export const getStaticProps = async () => {
   const genres = await tmdb.getGenres("movie");
   return {
     props: {
-      movies: movies.results,
+      movies: movies,
       genres: genres.genres,
     },
   };
