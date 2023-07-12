@@ -1,29 +1,26 @@
-import { useRouter } from "next/router";
-import Link from "next/link";
-import styles from "../../styles/Home.module.css";
+import React, { useState } from "react";
+import { Paginator } from "primereact/paginator";
 
-const Pagination = ({ currentPage, totalPages, onPageChange }) => {
-  if (totalPages === 1) return null;
-  const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
+//theme
+import "primereact/resources/themes/lara-light-indigo/theme.css";
 
+//core
+import "primereact/resources/primereact.min.css";
+
+export default function BasicPaginator({
+  currentPage,
+  totalPages,
+  data,
+  onPageChange,
+  first,
+  rows,
+}) {
   return (
-    <div>
-      <ul className={styles.pagination}>
-        {pages.map((page) => (
-          <li
-            key={page}
-            className={
-              page === currentPage ? styles.pageItemActive : styles.pageItem
-            }
-          >
-            <a className={styles.pageLink} onClick={() => onPageChange(page)}>
-              {page}
-            </a>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <Paginator
+      first={first}
+      rows={20}
+      totalRecords={data.total_results}
+      onPageChange={onPageChange}
+    />
   );
-};
-
-export default Pagination;
+}
