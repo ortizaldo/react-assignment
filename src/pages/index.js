@@ -51,7 +51,7 @@ export default function Home({ movies, genres, loading = true }) {
   return (
     <>
       {err && <h2>{err}</h2>}
-      <div className="container p-4 max-w-full">
+      <div class="container p-4 max-w-full">
         {isLoading && (
           <ProgressSpinner animationDuration=".5s" aria-label="Loading" />
         )}

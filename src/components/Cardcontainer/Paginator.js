@@ -16,11 +16,13 @@ export default function BasicPaginator({
   rows,
 }) {
   return (
-    <Paginator
-      first={first}
-      rows={20}
-      totalRecords={data.total_results}
-      onPageChange={onPageChange}
-    />
+    <footer class="md:flex items-center justify-between py-3 md:py-4 bg-gray-900  relative   text-gray-50 ">
+      <Paginator
+        first={first}
+        rows={20}
+        totalRecords={data.total_results}
+        onPageChange={onPageChange}
+      />
+    </footer>
   );
 }

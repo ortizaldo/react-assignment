@@ -2,8 +2,8 @@ import tmdb from "../config/tmdb";
 import Moviescontainer from "../components/Cardcontainer";
 export default function upcomingMovies({ movies, genres }) {
   return (
-    <div className="container ">
-      <section className="mt-8">
+    <div class="container ">
+      <section class="mt-8">
         <Moviescontainer data={movies} genres={genres} type="movies" />
       </section>
     </div>

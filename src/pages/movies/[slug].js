@@ -28,15 +28,15 @@ export default function SingleMovie({ moviesData }) {
 
   return (
     <>
-      <div className="container px-4">
-        <section className="mt-8 text-gray-800 grid md:grid-cols-3 gap-2">
-          <section className="col-span-3 md:col-span-1 flex flex-col items-center">
+      <div class="container px-4">
+        <section class="mt-8 text-gray-800 grid md:grid-cols-3 gap-2">
+          <section class="col-span-3 md:col-span-1 flex flex-col items-center">
             <Image
               src={`https://image.tmdb.org/t/p/w500${poster_path}`}
               alt={original_title}
               width="300"
               height="350"
-              className="rounded-lg"
+              class="rounded-lg"
             />
             <div className={clsx("text-2xl font-bold", titleFont.className)}>
               {title}
@@ -45,7 +45,7 @@ export default function SingleMovie({ moviesData }) {
               </p>
             </div>
           </section>
-          <section className="col-span-3 md:col-span-2">
+          <section class="col-span-3 md:col-span-2">
             <div className={clsx("m-1", text.className)}>
               <p
                 className={clsx(
@@ -63,7 +63,7 @@ export default function SingleMovie({ moviesData }) {
               >
                 Genres
               </p>
-              <div className="flex  gap-2">
+              <div class="flex  gap-2">
                 {genres.map((genre) => (
                   <div className={clsx("m-1", text.className)} key={genre.id}>
                     {genre.name}
@@ -93,12 +93,12 @@ export default function SingleMovie({ moviesData }) {
                 href={`https://www.youtube.com/watch?v=${results[0].key}`}
                 target="_blank"
                 rel="noreferrer"
-                className="flex gap-2"
+                class="flex gap-2"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="-35.20005 -41.33325 305.0671 247.9995"
-                  className="h-6 w-6 mr-1"
+                  class="h-6 w-6 mr-1"
                 >
                   <path
                     d="M93.333 117.559V47.775l61.334 34.893zm136.43-91.742c-2.699-10.162-10.651-18.165-20.747-20.881C190.716 0 117.333 0 117.333 0S43.951 0 25.651 4.936C15.555 7.652 7.603 15.655 4.904 25.817 0 44.236 0 82.667 0 82.667s0 38.429 4.904 56.849c2.699 10.163 10.65 18.165 20.747 20.883 18.3 4.934 91.682 4.934 91.682 4.934s73.383 0 91.683-4.934c10.096-2.718 18.048-10.72 20.747-20.883 4.904-18.42 4.904-56.85 4.904-56.85s0-38.43-4.904-56.849"
@@ -111,20 +111,20 @@ export default function SingleMovie({ moviesData }) {
           </section>
         </section>
         <section className={clsx("mt-8", text.className)}>
-          <p className="text-3xl mb-3">Cast</p>
+          <p class="text-3xl mb-3">Cast</p>
 
-          <div className="grid grid-cols-2 md:grid-cols-6 ">
+          <div class="grid grid-cols-2 md:grid-cols-6 ">
             {cast.slice(0, 6).map((c) => (
-              <div key={c.id} className="flex flex-col items-center m-2">
+              <div key={c.id} class="flex flex-col items-center m-2">
                 <Image
                   src={`https://image.tmdb.org/t/p/w500${c.profile_path}`}
                   alt={c.character}
                   width="150"
                   height="180"
-                  className="rounded-lg"
+                  class="rounded-lg"
                 />
                 <p> {c.name}</p>
-                <p className="text-gray-700 italic"> {c.character}</p>
+                <p class="text-gray-700 italic"> {c.character}</p>
               </div>
             ))}
           </div>
