@@ -51,11 +51,11 @@ export default function Home({ movies, genres, loading = true }) {
   return (
     <>
       {err && <h2>{err}</h2>}
-      <div class="container p-4 max-w-full">
+      <div className="container p-4 max-w-full">
         {isLoading && (
           <ProgressSpinner animationDuration=".5s" aria-label="Loading" />
         )}
-        <section class="grid p-4">
+        <section className="grid p-4">
           <Moviescontainer
             data={data.movies}
             genres={data.genres}
@@ -63,7 +63,7 @@ export default function Home({ movies, genres, loading = true }) {
           />
         </section>
         <PaginatorComponent
-          class="grid grid-cols-2 md:grid-cols-6 space-x-2 mt-4"
+          className="grid grid-cols-2 md:grid-cols-6 space-x-2 mt-4"
           currentPage={data.movies.page}
           first={first}
           rows={rows}

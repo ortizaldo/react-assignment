@@ -16,7 +16,7 @@ export default function BasicPaginator({
   rows,
 }) {
   return (
-    <footer class="md:flex items-center justify-between py-3 md:py-4 bg-gray-900  relative   text-gray-50 ">
+    <footer className="md:flex items-center justify-between py-3 md:py-4 bg-gray-900  relative   text-gray-50 ">
       <Paginator
         first={first}
         rows={20}
