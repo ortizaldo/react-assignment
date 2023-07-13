@@ -64,10 +64,7 @@ export default function Home({ movies, genres, loading = true }) {
         </section>
         <PaginatorComponent
           className="grid grid-cols-2 md:grid-cols-6 space-x-2 mt-4"
-          currentPage={data.movies.page}
           first={first}
-          rows={rows}
-          totalPages={data.movies.total_pages}
           data={data.movies}
           onPageChange={onPageChange}
         />

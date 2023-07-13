@@ -12,24 +12,10 @@ export const text = Poppins({
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
 });
 
-export default function Header() {
-  useEffect(() => {
-    const menuToggler = document.getElementById("menu-toggler");
-    const menu = document.getElementById("menu");
-    menuToggler.addEventListener("click", () => {
-      menu.classList.toggle("hidden");
-    });
-  }, []);
-
+export default function Footer() {
   return (
     <header className="md:flex items-center justify-between py-3 md:py-4 bg-gray-900  relative   text-gray-50 ">
-      <div class="container text-center">
-        <div class="row">
-          <div class="col-8">col-8</div>
-          <div class="col-4">col-4</div>
-        </div>
-      </div>
-      <div className="flex justify-between min-w-min px-4">
+      {/* <div className="flex justify-between min-w-min px-4">
         <div className="flex text-2xl md:text-3xl font-normal relative  items-center">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -101,7 +87,7 @@ export default function Header() {
             </Link>
           </li>
         </ul>
-      </nav>
+      </nav> */}
     </header>
   );
 }
