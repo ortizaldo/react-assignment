@@ -39,6 +39,11 @@ export default function Header() {
         {
           label: "Popular",
           icon: "pi pi-fw pi-star-fill",
+          url: "/popular-movies",
+        },
+        {
+          label: "Top rated",
+          icon: "pi pi-fw pi-star-fill",
           url: "/top-rated",
         },
       ],

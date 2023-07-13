@@ -1,6 +1,8 @@
 import tmdb from "../config/tmdb";
 import Moviescontainer from "../components/Cardcontainer";
 import PaginatorComponent from "../components/Cardcontainer/Paginator";
+import Container from "react-bootstrap/Container";
+import { Row } from "react-bootstrap";
 import { ProgressSpinner } from "primereact/progressspinner";
 import { useEffect, useState } from "react";
 export default function Home({ movies, genres, loading = true }) {
@@ -12,7 +14,6 @@ export default function Home({ movies, genres, loading = true }) {
 
   const [first, setFirst] = useState(1);
   const [rows, setRows] = useState(20);
-  const [currentPage, setCurrentPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   const [err, setErr] = useState("");
 
@@ -26,10 +27,6 @@ export default function Home({ movies, genres, loading = true }) {
     setIsLoading(true);
     try {
       const movies = await tmdb.discover("movie", [
-        {
-          param: "sort_by",
-          value: "vote_count.desc",
-        },
         {
           param: "page",
           value: page,
@@ -51,34 +48,33 @@ export default function Home({ movies, genres, loading = true }) {
   return (
     <>
       {err && <h2>{err}</h2>}
-      <div className="container p-4 max-w-full">
+      <Container fluid className="p-4">
         {isLoading && (
           <ProgressSpinner animationDuration=".5s" aria-label="Loading" />
         )}
-        <section className="grid p-4">
+        <Row>
           <Moviescontainer
+            className="mt-8"
             data={data.movies}
             genres={data.genres}
             type="movies"
           />
-        </section>
-        <PaginatorComponent
-          className="grid grid-cols-2 md:grid-cols-6 space-x-2 mt-4"
-          first={first}
-          data={data.movies}
-          onPageChange={onPageChange}
-        />
-      </div>
+        </Row>
+        <Row>
+          <PaginatorComponent
+            className="grid grid-cols-2 md:grid-cols-6 space-x-2 mt-4"
+            first={first}
+            data={data.movies}
+            onPageChange={onPageChange}
+          />
+        </Row>
+      </Container>
     </>
   );
 }
 
 export const getStaticProps = async () => {
   const movies = await tmdb.discover("movie", [
-    {
-      param: "sort_by",
-      value: "vote_count.desc",
-    },
     {
       param: "page",
       value: 1,

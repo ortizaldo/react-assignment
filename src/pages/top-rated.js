@@ -1,12 +1,67 @@
 import tmdb from "../config/tmdb";
 import Moviescontainer from "../components/Cardcontainer";
-export default function Home({ movies, genres }) {
+export default function TopRated({ movies, genres, loading = true }) {
+  const [data, setData] = useState({
+    movies,
+    genres,
+    loading,
+  });
+
+  const [first, setFirst] = useState(1);
+  const [rows, setRows] = useState(20);
+  const [isLoading, setIsLoading] = useState(false);
+  const [err, setErr] = useState("");
+
+  const onPageChange = (event) => {
+    setFirst(event.first);
+    setRows(event.rows);
+    callMoviesFunc(event.page + 1);
+  };
+
+  const callMoviesFunc = async (page) => {
+    setIsLoading(true);
+    try {
+      const movies = await tmdb.discover("upcoming", [
+        {
+          param: "page",
+          value: page,
+        },
+      ]);
+      const genres = await tmdb.getGenres("movie");
+      setData({
+        movies: movies,
+        genres: genres.genres,
+        loading: false,
+      });
+    } catch (error) {
+      setErr(error.message);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
-    <div className="container p-4 max-w-full">
-      <section>
-        <Moviescontainer data={movies} genres={genres} type="movies" />
-      </section>
-    </div>
+    <>
+      {err && <h2>{err}</h2>}
+      <div className="container p-4 max-w-full">
+        {isLoading && (
+          <ProgressSpinner animationDuration=".5s" aria-label="Loading" />
+        )}
+        <section className="mt-8">
+          <Moviescontainer
+            data={data.movies}
+            genres={data.genres}
+            type="movies"
+          />
+        </section>
+        <PaginatorComponent
+          className="grid grid-cols-2 md:grid-cols-6 space-x-2 mt-4"
+          first={first}
+          data={data.movies}
+          onPageChange={onPageChange}
+        />
+      </div>
+    </>
   );
 }
 
@@ -15,6 +70,10 @@ export const getStaticProps = async () => {
     {
       param: "sort_by",
       value: "vote_count.desc",
+    },
+    {
+      param: "page",
+      value: page,
     },
   ]);
 
