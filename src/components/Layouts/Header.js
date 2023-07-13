@@ -2,6 +2,11 @@ import React, { useEffect } from "react";
 import Link from "next/link";
 import { Inter, Rubik, Poppins } from "@next/font/google";
 import clsx from "clsx";
+import { Menubar } from "primereact/menubar";
+import { InputText } from "primereact/inputtext";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 export const titleFont = Rubik({
   subsets: ["latin"],
@@ -13,95 +18,49 @@ export const text = Poppins({
 });
 
 export default function Header() {
-  useEffect(() => {
-    const menuToggler = document.getElementById("menu-toggler");
-    const menu = document.getElementById("menu");
-    menuToggler.addEventListener("click", () => {
-      menu.classList.toggle("hidden");
-    });
-  }, []);
+  const items = [
+    {
+      label: "Movies",
+      icon: "pi pi-fw pi-video",
+      items: [
+        {
+          label: "All",
+          icon: "pi pi-fw pi-list",
+        },
+        {
+          separator: true,
+        },
+        {
+          label: "Upcoming",
+          icon: "pi pi-fw pi-fast-forward",
+        },
+        {
+          label: "Popular",
+          icon: "pi pi-fw pi-star-fill",
+        },
+      ],
+    },
+    {
+      label: "TV Shows",
+      icon: "pi pi-fw pi-camera",
+    },
+  ];
+
+  const start = (
+    <img
+      alt="logo"
+      src="https://primefaces.org/cdn/primereact/images/logo.png"
+      height="40"
+      className="mr-2"
+    ></img>
+  );
+  const end = <InputText placeholder="Search" type="text" />;
 
   return (
-    <header className="md:flex items-center justify-between py-3 md:py-4 bg-gray-900  relative   text-gray-50 ">
-      <div class="container text-center">
-        <div class="row">
-          <div class="col-8">col-8</div>
-          <div class="col-4">col-4</div>
-        </div>
+    <header className="md:flex items-center justify-between bg-gray-900 relative text-gray-50">
+      <div>
+        <Menubar model={items} start={start} end={end} />
       </div>
-      <div className="flex justify-between min-w-min px-4">
-        <div className="flex text-2xl md:text-3xl font-normal relative  items-center">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-10 w-10"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={1}
-              d="M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4M4 20h16a1 1 0 001-1V5a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1z"
-            />
-          </svg>
-          <Link
-            href="/"
-            className={clsx("text-2xl font-bold", titleFont.className)}
-          >
-            Movies App
-          </Link>
-        </div>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          id="menu-toggler"
-          className="block cursor-pointer md:hidden self-center h-10 w-10"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="1"
-            d="M4 6h16M4 12h8m-8 6h16"
-          />
-        </svg>
-      </div>
-      <nav className=" md:mt-0 transition delay-300 ease-out md:px-4">
-        <ul
-          id="menu"
-          className=" bg-gray-800 w-full py-4 md:py-0 md:mt-0 z-40 absolute   md:relative  md:bg-gray-900 mt-3 pl-4   flex flex-col hidden md:flex   md:flex-row m-0 p-0  text-lg md:items-center gap-8"
-        >
-          <li>
-            {" "}
-            <Link
-              className={clsx("text-1xl", titleFont.className)}
-              href="/upcoming-movies"
-            >
-              Upcoming Movies
-            </Link>
-          </li>
-          <li>
-            {" "}
-            <Link
-              className={clsx("text-1xl", titleFont.className)}
-              href="/popular-movies"
-            >
-              Popular Movies
-            </Link>
-          </li>
-          <li>
-            {" "}
-            <Link
-              className={clsx("text-1xl", titleFont.className)}
-              href="/top-rated"
-            >
-              Top rated Movies
-            </Link>
-          </li>
-        </ul>
-      </nav>
     </header>
   );
 }

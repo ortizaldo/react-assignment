@@ -1,9 +1,10 @@
 import Image from "next/image";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
-import "react-circular-progressbar/dist/styles.css";
 import { Inter, Rubik, Poppins } from "@next/font/google";
 import clsx from "clsx";
 import genSlug from "../../utils/gen-slug";
+
+import "react-circular-progressbar/dist/styles.css";
 
 export const titleFont = Rubik({
   subsets: ["latin"],

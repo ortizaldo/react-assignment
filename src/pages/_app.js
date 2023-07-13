@@ -3,7 +3,7 @@ import Footer from "../components/Layouts/Footer";
 
 import "../styles/globals.css";
 import "bootstrap/dist/css/bootstrap.css";
-// import "tailwindcss/tailwind.css";
+import "primeicons/primeicons.css";
 function TMDBApp({ Component, pageProps }) {
   return (
     <>
