@@ -26,6 +26,7 @@ export default function Header() {
         {
           label: "All",
           icon: "pi pi-fw pi-list",
+          url: "/",
         },
         {
           separator: true,
@@ -33,10 +34,12 @@ export default function Header() {
         {
           label: "Upcoming",
           icon: "pi pi-fw pi-fast-forward",
+          url: "/upcoming-movies",
         },
         {
           label: "Popular",
           icon: "pi pi-fw pi-star-fill",
+          url: "/top-rated",
         },
       ],
     },
