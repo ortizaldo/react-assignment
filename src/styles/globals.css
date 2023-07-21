@@ -16,8 +16,26 @@
   }
 }
 
+.p-menubar {
+  padding: 0.5rem;
+  background: #004d9b;
+  color: #ffffff;
+  border: 1px solid #004d9b;
+  border-radius: 6px;
+}
+
+.p-menubar .p-menubar-root-list>.p-menuitem>.p-menuitem-link {
+  padding: 0.75rem 1.25rem;
+  color: #fdfdfd;
+  border-radius: 6px;
+  transition: box-shadow 0.2s;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
 body {
-  background-color: #d2d2d2;
+  background-color: #bababa;
   padding: 0px;
   margin: 0px;
   width: 100%;
@@ -75,7 +93,7 @@ body {
   top: -1.4rem;
 }
 
-.card img {
+.movie-card img {
   width: 100%;
   height: 100%;
   transition: all 0.5s cubic-bezier(0.8, 0.5, 0.2, 1.4);

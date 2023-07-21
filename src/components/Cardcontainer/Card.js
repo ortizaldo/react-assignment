@@ -41,9 +41,23 @@ export default function Movie(props) {
 
   const [loading, setLoading] = useState(false);
 
-  const average = vote_average * 10;
+  let average = vote_average * 10;
+  const avgColorObj = {
+    colorAverage: "#999999",
+    colorRange: "#aeaeae",
+  };
 
-  // Buscar en el array de objetos
+  if (average >= 40 && average < 70) {
+    avgColorObj.colorAverage = "#f1ff04";
+    avgColorObj.colorRange = "#cee153";
+  } else if (average > 0 && average < 40) {
+    avgColorObj.colorAverage = "#ee0707";
+    avgColorObj.colorRange = "#bb7777";
+  } else if (average >= 70) {
+    avgColorObj.colorAverage = "#5fff36";
+    avgColorObj.colorRange = "#2e6a30";
+  }
+
   const resultados = genres.filter((genre) => genre_ids.includes(genre.id));
 
   return (
@@ -60,17 +74,21 @@ export default function Movie(props) {
         <div className="row">
           <div className="col-4 ml-3 corner">
             <Knob
-              value={average}
+              value={average == 0 ? "NR" : average}
               onChange={(e) => setValue(e.value)}
               min={0}
               max={100}
               strokeWidth={14}
               size={50}
-              rangeColor="#48d1cc"
+              valueColor={avgColorObj.colorAverage}
+              rangeColor={avgColorObj.colorRange}
               className="custom-knob"
               style={{ fontWeight: "bold" }}
               textColor="white"
             />
+          </div>
+          <div className="col-8">
+            <Tag value={release_date}></Tag>
           </div>
         </div>
         <h2 className={clsx(titleFont.className)}>{original_title}</h2>

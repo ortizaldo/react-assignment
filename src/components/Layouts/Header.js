@@ -65,7 +65,7 @@ export default function Header() {
   const end = <InputText placeholder="Search" type="text" />;
 
   return (
-    <header className="md:flex items-center justify-between bg-gray-900 relative text-gray-50">
+    <header className="md:flex items-center justify-between relative text-gray-50 headerBG">
       <div>
         <Menubar model={items} start={start} end={end} />
       </div>
