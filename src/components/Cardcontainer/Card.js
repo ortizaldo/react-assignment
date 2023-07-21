@@ -47,7 +47,18 @@ export default function Movie(props) {
   const resultados = genres.filter((genre) => genre_ids.includes(genre.id));
   return (
     <>
-      <div className="card">
+      <div class="movie-card">
+        <Image
+          src={`https://image.tmdb.org/t/p/w500${poster_path}`}
+          alt={original_title}
+          width="300"
+          height="350"
+        />
+        <h2>Título de la película</h2>
+        <p>Descripción de la película</p>
+      </div>
+
+      {/* <div className="card">
         <div className="containerIMG h-50 p-0">
           <Image
             src={`https://image.tmdb.org/t/p/w500${poster_path}`}
@@ -86,7 +97,7 @@ export default function Movie(props) {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   );
 }
