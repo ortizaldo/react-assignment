@@ -74,7 +74,8 @@ export default function Home({ movies, genres, loading = true }) {
   );
 }
 
-export const getStaticProps = async () => {
+export const getStaticProps = async (props) => {
+  console.log("🚀 ~ file: index.js:78 ~ getStaticProps ~ props:", this);
   const movies = await tmdb.discover("movie", [
     {
       param: "page",

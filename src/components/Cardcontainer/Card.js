@@ -45,17 +45,35 @@ export default function Movie(props) {
 
   // Buscar en el array de objetos
   const resultados = genres.filter((genre) => genre_ids.includes(genre.id));
+
   return (
     <>
-      <div class="movie-card">
-        <Image
-          src={`https://image.tmdb.org/t/p/w500${poster_path}`}
-          alt={original_title}
-          width="300"
-          height="350"
-        />
-        <h2>Título de la película</h2>
-        <p>Descripción de la película</p>
+      <div className="movie-card containerCard">
+        <div className="row">
+          <Image
+            src={`https://image.tmdb.org/t/p/w500${poster_path}`}
+            alt={original_title}
+            width="300"
+            height="350"
+          />
+        </div>
+        <div className="row">
+          <div className="col-4 ml-3 corner">
+            <Knob
+              value={average}
+              onChange={(e) => setValue(e.value)}
+              min={0}
+              max={100}
+              strokeWidth={14}
+              size={50}
+              rangeColor="#48d1cc"
+              className="custom-knob"
+              style={{ fontWeight: "bold" }}
+              textColor="white"
+            />
+          </div>
+        </div>
+        <h2 className={clsx(titleFont.className)}>{original_title}</h2>
       </div>
 
       {/* <div className="card">

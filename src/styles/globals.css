@@ -72,7 +72,7 @@ body {
 
 .corner {
   position: relative;
-  top: -0.4rem;
+  top: -1.4rem;
 }
 
 .card img {
@@ -165,7 +165,7 @@ text-color{
 .movie-card {
   border: 1px solid #ccc;
   border-radius: 5px;
-  padding: 10px;
+  padding: 6px;
 }
 
 /* Estilos para la imagen de la película */
