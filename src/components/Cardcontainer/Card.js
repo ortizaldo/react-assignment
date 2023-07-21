@@ -1,10 +1,19 @@
+import React from "react";
 import Image from "next/image";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
+import { Knob } from "primereact/knob";
+import { Chip } from "primereact/chip";
 import { Inter, Rubik, Poppins } from "@next/font/google";
 import clsx from "clsx";
 import genSlug from "../../utils/gen-slug";
 
 import "react-circular-progressbar/dist/styles.css";
+import { Badge, Col, Container, Row } from "react-bootstrap";
+import { Card } from "primereact/card";
+import { Button } from "primereact/button";
+import { useState } from "react";
+import Link from "next/link";
+import { Tag } from "primereact/tag";
 
 export const titleFont = Rubik({
   subsets: ["latin"],
@@ -16,7 +25,6 @@ export const text = Poppins({
 });
 
 export default function Movie(props) {
-  // console.log("🚀 ~ file: Card.js:18 ~ Movie ~ props:", props);
   const {
     title,
     name,
@@ -31,83 +39,170 @@ export default function Movie(props) {
     genres,
   } = props;
 
+  const [loading, setLoading] = useState(false);
+
+  const average = vote_average * 10;
+
   // Buscar en el array de objetos
   const resultados = genres.filter((genre) => genre_ids.includes(genre.id));
   return (
     <>
       <div className="card">
-        <Image
-          src={`https://image.tmdb.org/t/p/w500${poster_path}`}
-          alt={original_title}
-          width="300"
-          height="350"
-        />
-        <div className="descriptions">
-          <div className="grid grid-flow-row auto-rows-max">
-            <div className={clsx("text-2xl font-bold", titleFont.className)}>
-              <h1 className={clsx("text-2xl font-bold", titleFont.className)}>
-                {original_title}
-              </h1>
-            </div>
-            <div style={{ width: 40, height: 40 }}>
-              <CircularProgressbar
-                className={clsx(text.className)}
-                value={vote_average * 10}
-                text={`${vote_average * 10}%`}
-                styles={buildStyles({
-                  // Rotation of path and trail, in number of turns (0-1)
-                  rotation: 0.25,
-
-                  // Whether to use rounded or flat corners on the ends - can use 'butt' or 'round'
-                  strokeLinecap: "butt",
-
-                  // Text size
-                  textSize: "2rem",
-
-                  // How long animation takes to go from one percentage to another, in seconds
-                  pathTransitionDuration: 0.5,
-
-                  // Can specify path transition in more detail, or remove it entirely
-                  // pathTransition: 'none',
-
-                  // Colors
-                  textColor: "#222",
-                  trailColor: "#0073b1",
-                  backgroundColor: "#0073b1",
-                })}
+        <div className="containerIMG h-50 p-0">
+          <Image
+            src={`https://image.tmdb.org/t/p/w500${poster_path}`}
+            alt={original_title}
+            width="300"
+            height="350"
+          />
+        </div>
+        <div className="h-50 p-0 containerCard">
+          <div className="row">
+            <div className="col-4 ml-3 corner">
+              <Knob
+                value={average}
+                onChange={(e) => setValue(e.value)}
+                min={0}
+                max={100}
+                strokeWidth={14}
+                size={50}
+                rangeColor="#48d1cc"
+                className="custom-knob"
+                style={{ fontWeight: "bold" }}
+                textColor="white"
               />
             </div>
-            <div
-              className={clsx(
-                "grid grid-flow-col auto-cols-max text-color",
-                titleFont.className
-              )}
-            >
-              <div style={{ color: "#0073b1" }}>PG-13</div>
-              <div className="ml-2" style={{ color: "#0073b1" }}>
-                {release_date}
-              </div>
-            </div>
-            <p className={clsx("", text.className)}>
-              {resultados.map((objeto, idx) => {
-                idx += 1;
-                return idx === resultados.length
-                  ? objeto.name
-                  : objeto.name + ", ";
-              })}
-            </p>
+          </div>
+          <div className="row">
+            <Container className="grid grid-flow-row auto-rows-max">
+              <Row className={clsx("text-2xl font-bold", titleFont.className)}>
+                <h2 className={clsx(titleFont.className)}>{original_title}</h2>
+              </Row>
 
-            <button type="button" className="p-2 mt-4">
-              <i className="fab fa-youtube"></i>
-              <a
-                className={clsx("", text.className)}
-                href={`/${type}/${genSlug(title || name, id)}`}
-              >
-                {title || name}
-              </a>
-            </button>
+              {/* <Row>
+                <Col>
+                  <div
+                    className={clsx(
+                      "grid grid-flow-col auto-cols-max text-color",
+                      titleFont.className
+                    )}
+                  >
+                    {resultados.map((objeto, idx) => {
+                      idx += 1;
+                      return (
+                        <div
+                          className="col-4 ml-2"
+                          style={{ color: "#0073b1" }}
+                        >
+                          <Tag value={objeto.name} />
+                        </div>
+                      );
+                    })}
+                  </div>
+                </Col>
+              </Row> */}
+              {/* <Row>
+                <Col>
+                  <a
+                    className="btn"
+                    href={`/${type}/${genSlug(title || name, id)}`}
+                  >
+                    {title || name}
+                  </a>
+                </Col>
+              </Row> */}
+            </Container>
+          </div>
+          <div className="row">
+            <div className="mt-1 col-8">
+              <Tag value={release_date}></Tag>
+            </div>
           </div>
         </div>
+        {/* <div className="corner" style={{ width: 60, height: 60 }}>
+          <Knob
+            value={average}
+            onChange={(e) => setValue(e.value)}
+            min={0}
+            max={100}
+            strokeWidth={10}
+            size={60}
+          />
+        </div>
+        <Container>
+          <Row>
+            <Image
+              src={`https://image.tmdb.org/t/p/w500${poster_path}`}
+              alt={original_title}
+              width="300"
+              height="350"
+            />
+          </Row>
+          <Row>
+            <div className="descriptions">
+              <Container className="grid grid-flow-row auto-rows-max">
+                <Row
+                  className={clsx("text-2xl font-bold", titleFont.className)}
+                >
+                  <h5
+                    className={clsx("text-xl font-bold", titleFont.className)}
+                  >
+                    {original_title}
+                  </h5>
+                </Row>
+
+                <Row>
+                  <Col></Col>
+                  <Col>
+                    <div
+                      className={clsx(
+                        "grid grid-flow-col auto-cols-max text-color",
+                        titleFont.className
+                      )}
+                    >
+                      <div className="ml-2" style={{ color: "#0073b1" }}>
+                        <Tag value={release_date}></Tag>
+                      </div>
+                    </div>
+                  </Col>
+                </Row>
+
+                <Row>
+                  <Col>
+                    <div
+                      className={clsx(
+                        "grid grid-flow-col auto-cols-max text-color",
+                        titleFont.className
+                      )}
+                    >
+                      {resultados.map((objeto, idx) => {
+                        idx += 1;
+                        return (
+                          <div
+                            className="col-4 ml-2"
+                            style={{ color: "#0073b1" }}
+                          >
+                            <Tag value={objeto.name} />
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </Col>
+                </Row>
+                <Row>
+                  <Col>
+                    <a
+                      className="btn"
+                      href={`/${type}/${genSlug(title || name, id)}`}
+                    >
+                      {title || name}
+                    </a>
+                  </Col>
+                </Row>
+              </Container>
+            </div>
+          </Row>
+        </Container> */}
       </div>
     </>
   );

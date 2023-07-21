@@ -1,5 +1,10 @@
 import tmdb from "../config/tmdb";
 import Moviescontainer from "../components/Cardcontainer";
+import PaginatorComponent from "../components/Cardcontainer/Paginator";
+import Container from "react-bootstrap/Container";
+import { Row } from "react-bootstrap";
+import { ProgressSpinner } from "primereact/progressspinner";
+import { useEffect, useState } from "react";
 export default function TopRated({ movies, genres, loading = true }) {
   const [data, setData] = useState({
     movies,
@@ -43,24 +48,27 @@ export default function TopRated({ movies, genres, loading = true }) {
   return (
     <>
       {err && <h2>{err}</h2>}
-      <div className="container p-4 max-w-full">
+      <Container fluid className="p-4">
         {isLoading && (
           <ProgressSpinner animationDuration=".5s" aria-label="Loading" />
         )}
-        <section className="mt-8">
+        <Row>
           <Moviescontainer
+            className="mt-8"
             data={data.movies}
             genres={data.genres}
             type="movies"
           />
-        </section>
-        <PaginatorComponent
-          className="grid grid-cols-2 md:grid-cols-6 space-x-2 mt-4"
-          first={first}
-          data={data.movies}
-          onPageChange={onPageChange}
-        />
-      </div>
+        </Row>
+        <Row>
+          <PaginatorComponent
+            className="grid grid-cols-2 md:grid-cols-6 space-x-2 mt-4"
+            first={first}
+            data={data.movies}
+            onPageChange={onPageChange}
+          />
+        </Row>
+      </Container>
     </>
   );
 }
@@ -73,7 +81,7 @@ export const getStaticProps = async () => {
     },
     {
       param: "page",
-      value: page,
+      value: 1,
     },
   ]);
 
