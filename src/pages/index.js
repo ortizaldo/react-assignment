@@ -52,23 +52,22 @@ export default function Home({ movies, genres, loading = true }) {
         {isLoading && (
           <ProgressSpinner animationDuration=".5s" aria-label="Loading" />
         )}
-        <Row>
-          <div className="col-4"></div>
-          <div className="col">
-            <Moviescontainer
-              className="mt-8"
-              data={data.movies}
-              genres={data.genres}
-              type="movies"
-            />
-            <PaginatorComponent
-              className="grid grid-cols-2 md:grid-cols-6 space-x-2 mt-4"
-              first={first}
-              data={data.movies}
-              onPageChange={onPageChange}
-            />
-          </div>
-        </Row>
+        <div className="row">
+          <Moviescontainer
+            className="mt-8"
+            data={data.movies}
+            genres={data.genres}
+            type="movies"
+          />
+        </div>
+        <div className="row p-4">
+          <PaginatorComponent
+            className="grid grid-cols-2 md:grid-cols-6 space-x-2 mt-4"
+            first={first}
+            data={data.movies}
+            onPageChange={onPageChange}
+          />
+        </div>
       </Container>
     </>
   );
