@@ -27,11 +27,6 @@ export default function UpcomingMovies({ movies, genres, loading = true }) {
     setIsLoading(true);
     try {
       const movies = await tmdb.movies("upcoming", page);
-      console.log(
-        "%cupcoming-movies.js line:35 movies",
-        "color: #007acc;",
-        movies
-      );
       const genres = await tmdb.getGenres("movie");
       setData({
         movies: movies,
@@ -53,20 +48,21 @@ export default function UpcomingMovies({ movies, genres, loading = true }) {
           <ProgressSpinner animationDuration=".5s" aria-label="Loading" />
         )}
         <Row>
-          <Moviescontainer
-            className="mt-8"
-            data={data.movies}
-            genres={data.genres}
-            type="movies"
-          />
-        </Row>
-        <Row>
-          <PaginatorComponent
-            className="grid grid-cols-2 md:grid-cols-6 space-x-2 mt-4"
-            first={first}
-            data={data.movies}
-            onPageChange={onPageChange}
-          />
+          <div className="col-4"></div>
+          <div className="col">
+            <Moviescontainer
+              className="mt-8"
+              data={data.movies}
+              genres={data.genres}
+              type="movies"
+            />
+            <PaginatorComponent
+              className="grid grid-cols-2 md:grid-cols-6 space-x-2 mt-4"
+              first={first}
+              data={data.movies}
+              onPageChange={onPageChange}
+            />
+          </div>
         </Row>
       </Container>
     </>

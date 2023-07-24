@@ -53,20 +53,21 @@ export default function PopularMovies({ movies, genres }) {
           <ProgressSpinner animationDuration=".5s" aria-label="Loading" />
         )}
         <Row>
-          <Moviescontainer
-            className="mt-8"
-            data={data.movies}
-            genres={data.genres}
-            type="movies"
-          />
-        </Row>
-        <Row>
-          <PaginatorComponent
-            className="grid grid-cols-2 md:grid-cols-6 space-x-2 mt-4"
-            first={first}
-            data={data.movies}
-            onPageChange={onPageChange}
-          />
+          <div className="col-4"></div>
+          <div className="col">
+            <Moviescontainer
+              className="mt-8"
+              data={data.movies}
+              genres={data.genres}
+              type="movies"
+            />
+            <PaginatorComponent
+              className="grid grid-cols-2 md:grid-cols-6 space-x-2 mt-4"
+              first={first}
+              data={data.movies}
+              onPageChange={onPageChange}
+            />
+          </div>
         </Row>
       </Container>
     </>
