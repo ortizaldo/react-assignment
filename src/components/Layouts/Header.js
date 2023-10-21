@@ -26,7 +26,7 @@ export default function Header() {
         {
           label: "All",
           icon: "pi pi-fw pi-list",
-          url: "/",
+          url: "/?page=all",
         },
         {
           separator: true,
@@ -55,12 +55,7 @@ export default function Header() {
   ];
 
   const start = (
-    <img
-      alt="logo"
-      src="https://primefaces.org/cdn/primereact/images/logo.png"
-      height="40"
-      className="mr-2"
-    ></img>
+    <img alt="logo" src="/DevMinds2.png" height="40" className="mr-2"></img>
   );
   const end = <InputText placeholder="Search" type="text" />;
 

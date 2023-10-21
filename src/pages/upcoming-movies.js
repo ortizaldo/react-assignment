@@ -13,7 +13,7 @@ export default function UpcomingMovies({ movies, genres, loading = true }) {
   });
 
   const [first, setFirst] = useState(1);
-  const [rows, setRows] = useState(20);
+  const [rows, setRows] = useState(10);
   const [isLoading, setIsLoading] = useState(false);
   const [err, setErr] = useState("");
 

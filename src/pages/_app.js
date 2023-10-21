@@ -9,7 +9,6 @@ function TMDBApp({ Component, pageProps }) {
     <>
       <Header />
       <Component {...pageProps} />
-      <Footer />
     </>
   );
 }

@@ -13,7 +13,7 @@ export default function Home({ movies, genres, loading = true }) {
   });
 
   const [first, setFirst] = useState(1);
-  const [rows, setRows] = useState(20);
+  const [rows, setRows] = useState(10);
   const [isLoading, setIsLoading] = useState(false);
   const [err, setErr] = useState("");
 
@@ -52,22 +52,24 @@ export default function Home({ movies, genres, loading = true }) {
         {isLoading && (
           <ProgressSpinner animationDuration=".5s" aria-label="Loading" />
         )}
-        <div className="row">
-          <Moviescontainer
-            className="mt-8"
-            data={data.movies}
-            genres={data.genres}
-            type="movies"
-          />
-        </div>
-        <div className="row p-4">
+        <Row>
+          <div className="col">
+            <Moviescontainer
+              className="mt-8 pb-3"
+              data={data.movies}
+              genres={data.genres}
+              type="movies"
+            />
+          </div>
+        </Row>
+        <Row className="pt-3">
           <PaginatorComponent
             className="grid grid-cols-2 md:grid-cols-6 space-x-2 mt-4"
             first={first}
             data={data.movies}
             onPageChange={onPageChange}
           />
-        </div>
+        </Row>
       </Container>
     </>
   );
@@ -86,7 +88,6 @@ export const getStaticProps = async () => {
     props: {
       movies: movies,
       genres: genres.genres,
-      loading: false,
     },
   };
 };

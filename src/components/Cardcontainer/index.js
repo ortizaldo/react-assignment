@@ -5,7 +5,7 @@ export default function Cardcontainer({ data, genres, type }) {
   return (
     <div className="row justify-content-center movie-cards-container">
       {data.results.map((d) => (
-        <Col key={d.id} sm={3}>
+        <Col key={d.id} sm={2}>
           <Card key={d.id} type={type} genres={genres} {...d} />
         </Col>
       ))}
