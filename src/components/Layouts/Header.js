@@ -62,7 +62,7 @@ export default function Header() {
   return (
     <header className="md:flex items-center justify-between relative text-gray-50 headerBG">
       <div>
-        <Menubar model={items} start={start} end={end} />
+        <Menubar model={items} start={start} />
       </div>
     </header>
   );

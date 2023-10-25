@@ -48,7 +48,7 @@ export default function Home({ movies, genres, loading = true }) {
   return (
     <>
       {err && <h2>{err}</h2>}
-      <Container fluid className="p-4">
+      <Container fluid className="p-4 container-custom">
         {isLoading && (
           <ProgressSpinner animationDuration=".5s" aria-label="Loading" />
         )}
@@ -62,14 +62,7 @@ export default function Home({ movies, genres, loading = true }) {
             />
           </div>
         </Row>
-        <Row className="pt-3">
-          <PaginatorComponent
-            className="grid grid-cols-2 md:grid-cols-6 space-x-2 mt-4"
-            first={first}
-            data={data.movies}
-            onPageChange={onPageChange}
-          />
-        </Row>
+        <Row className="pt-3"></Row>
       </Container>
     </>
   );

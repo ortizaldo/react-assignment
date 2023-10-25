@@ -17,11 +17,18 @@
 }
 
 .p-menubar {
-  padding: 0.5rem;
-  background-color: #004d9b !important;
+  padding: 0;
+  background-color: #001349 !important;
   color: #ffffff;
-  border: 1px solid #004d9b !important;
+  border: 1px solid #001349 !important;
   border-radius: 6px;
+}
+
+.p-menubar ul {
+  margin: 2px;
+  padding: 0;
+  list-style: none;
+  margin-left: 5px !important;
 }
 
 .p-menubar .p-menubar-root-list>.p-menuitem>.p-menuitem-link {
@@ -62,7 +69,7 @@
 
 .p-menubar .p-menubar-root-list>.p-menuitem.p-menuitem-active>.p-menuitem-link .p-menuitem-text,
 .p-menubar .p-menubar-root-list>.p-menuitem.p-menuitem-active>.p-menuitem-link:not(.p-disabled):hover .p-menuitem-text {
-  color: #4338CA !important;
+  color: #001349 !important;
 }
 
 .p-menubar ul {
@@ -82,7 +89,28 @@ body {
 }
 
 header{
-  background-color: #004d9b !important;
+  background-color: #001349 !important;
+  position: fixed;
+  
+    top: 0;
+  
+    left: 0;
+  
+    width: 100%;
+  
+    z-index: 999px;
+  
+    box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.5);
+}
+
+.p-menubar .p-menubar-root-list>.p-menuitem>.p-menuitem-link .p-menuitem-icon {
+  color: #001349 !important;
+  margin-right: 0.5rem;
+}
+
+.p-menubar .p-menubar-root-list>.p-menuitem>.p-menuitem-link .p-submenu-icon {
+  color: #001349 !important;
+  margin-left: 0.5rem;
 }
 
 .wrapper {
@@ -122,7 +150,7 @@ header{
 
  .containerCard {
    color: whitesmoke;
-   background-color: black;
+   background-color: #001349;
    /* Replace with your desired background color */
  }
 
@@ -130,10 +158,9 @@ header{
   color: #d2d2d2 !important;
  }
 
-.corner {
-  position: relative;
-  top: -1.4rem;
-}
+ .container-custom {
+   margin-top: 7rem;;
+ }
 
 /* .movie-card img {
   width: 100%;
